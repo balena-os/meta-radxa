@@ -8,7 +8,7 @@ COMPATIBLE_MACHINE = "(rk3036|rk3066|rk3188|rk3288|rk3328|rk3399|rk3308)"
 DEPENDS = "dtc-native bc-native swig-native bison-native"
 
 # u-boot will build native python module
-inherit pythonnative
+inherit ${@bb.utils.contains("BBFILE_COLLECTIONS", "meta-python2", "pythonnative", "", d)}
 
 do_configure () {
     if [ -z "${UBOOT_CONFIG}" ]; then

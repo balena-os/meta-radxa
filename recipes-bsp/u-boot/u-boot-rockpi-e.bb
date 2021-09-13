@@ -19,7 +19,7 @@ SRCREV = "7b93f1b8bce4106266d4a38dde96fd8080faccea"
 S = "${WORKDIR}/git"
 
 # u-boot will build native python module
-inherit pythonnative
+inherit ${@bb.utils.contains("BBFILE_COLLECTIONS", "meta-python2", "pythonnative", "", d)}
 
 do_configure () {
     if [ -z "${UBOOT_CONFIG}" ]; then
